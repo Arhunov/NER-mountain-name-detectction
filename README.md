@@ -10,7 +10,9 @@ For the core model i used bert-base-NER, which can be found https://huggingface.
 ## Tuned model
 Fine tuned model takes tokenized sequence, attention mask and token type ids (which are set to 0) and returns labels for each token, where 1 indicates the beginning of a mountain name, 2 indicates being inside a mountain name, 0 - any other token.
 Evaluation (Green for correct predictions, Red for falsely predicted mountains, Yellow for missed true mountains):
+
 ![image](https://github.com/user-attachments/assets/56898169-82ed-4282-b018-a94fcaa6ca6d)
+
 The model demonstrates almost perfect accuracy in labeling mountain names, even when faced with challenging scenarios involving many other common names and instances of lowercase text.
 
 To use the model, ensure you are using legacy Keras. You can install the necessary package with: pip install tf-keras. Before importing TensorFlow in your Python script, add the following line: import os; os.environ['TF_USE_LEGACY_KERAS'] = '1'. Then, load the model using: tf.keras.models.load_model('mount_ner_model'). The tokenizer can be loaded from the transformers library using: transformers.AutoTokenizer.from_pretrained("dslim/bert-base-NER").
