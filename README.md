@@ -1,1 +1,9 @@
-# NER-mountain-name-detectction
+# NER-mountain-name-detection
+For this task i created dataset using Gemini (dataset.ipynb)
+I asked him to generate texts in different topics, formats and sizes, marking the mountain names with []. For example [Everest].
+Where I was testing base model, I noticed, that it so badly detects names of locations, if name is lowercase. This tells us, that model in first place see to the registr of first letter instead of word context. To avoid this hint, I lowercase half of the texts in dataset. Also I randomly changes half of the mountain names in dataset to one of other 180. That reduce the quality of texts, but stimulate model to better understand context of mountain names, even if it does not exist.
+In Gemini documentation specified number of requests per minute as 10, but how i understand, this number is floating. We will comply with this restriction, ignoring cases when Google returns an error about exceeding resources.
+The most hardest challenge was make Gemini returns texts, correctly marking mount names. Failure to do so will have a bad effect on tuned model. I achived acceptable quality (different common names in different contexts), but AI newer do things perfectly, so still occurs marking mistakes.
+
+For the core model i take bert-base-NER which can be find https://huggingface.co/dslim/bert-base-NER. This model is finetuned to recognize four types of entities: location (LOC), organizations (ORG), person (PER) and Miscellaneous (MISC). Cause it already recognizes common names, especialy locations, and know the difference between types, it make train process easier.
+Fine tuned model takes tokenized sequence, attention mask and token type ids (which seted to 0) and returns labels for each token, where 1 - begin of the mountain name, 2 - inside of the mountain name, 0 - any other token.
