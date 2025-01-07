@@ -16,6 +16,7 @@ Evaluation (Green for correct predictions, Red for falsely predicted mountains, 
 The model demonstrates almost perfect accuracy in labeling mountain names, even when faced with challenging scenarios involving many other common names and instances of lowercase text.
 
 Link to the model: https://drive.google.com/file/d/1LvWuH3AsGIzKVF5hqV6OiSV_2toGDNob/view?usp=sharing
+
 To use the model, ensure you are using legacy Keras. 
 You can install the necessary package with: pip install tf-keras. 
 Before importing TensorFlow in your Python script, add the following line: 
