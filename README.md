@@ -15,6 +15,7 @@ Evaluation (Green for correct predictions, Red for falsely predicted mountains, 
 
 The model demonstrates almost perfect accuracy in labeling mountain names, even when faced with challenging scenarios involving many other common names and instances of lowercase text.
 
+Link to the model: https://drive.google.com/file/d/1LvWuH3AsGIzKVF5hqV6OiSV_2toGDNob/view?usp=sharing
 To use the model, ensure you are using legacy Keras. You can install the necessary package with: pip install tf-keras. Before importing TensorFlow in your Python script, add the following line: import os; os.environ['TF_USE_LEGACY_KERAS'] = '1'. Then, load the model using: tf.keras.models.load_model('mount_ner_model'). The tokenizer can be loaded from the transformers library using: transformers.AutoTokenizer.from_pretrained("dslim/bert-base-NER").
 
 
